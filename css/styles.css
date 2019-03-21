@@ -116,7 +116,6 @@ nav h1 a {
 /* ====================== Map ====================== */
 #map-container {
     width: 100%;
-    order: 2;
 }
 
 #map {
@@ -128,7 +127,6 @@ nav h1 a {
 /* ====================== Restaurant Filtering ====================== */
 #filters {
     width: 100%;
-    order: 1;
     background-color: #3397DB;
     display: flex;
     flex-wrap: wrap;
@@ -163,22 +161,22 @@ nav h1 a {
 /* ====================== Restaurant Listing ====================== */
 #filter-results {
     width: 100%;
-    order: 3;
-
-    display: flex;
-    flex-wrap: wrap;
 }
 
 #restaurants-list {
     background-color: #f3f3f3;
     list-style: outside none none;
-    margin: 0;
     padding: 30px 15px 60px;
     text-align: center;
-    width:100%;
+    width:95%;
+    margin-left:auto;
+    margin-right:auto;
+
+    display:flex;
+    flex-wrap:wrap;
 }
 
-#restaurants-list li {
+#restaurants-list div {
     background-color: #fff;
     border: 2px solid #ccc;
     font-family: Arial, sans-serif;
@@ -186,7 +184,6 @@ nav h1 a {
     min-height: 380px;
     padding: 0 30px 25px;
     text-align: left;
-    width: 870px;
 }
 
 #restaurants-list .restaurant-img {
@@ -194,11 +191,11 @@ nav h1 a {
     display: block;
     margin: 0;
     max-width: 100%;
-    min-height: 248px;
+    /*min-height: 248px;*/
     min-width: 100%;
 }
 
-#restaurants-list li h1 {
+#restaurants-list div h1 {
     color: #f18200;
     font-family: Arial, sans-serif;
     font-size: 14pt;
@@ -214,7 +211,7 @@ nav h1 a {
     font-size: 11pt;
 }
 
-#restaurants-list li a {
+#restaurants-list div a {
     background-color: orange;
     border-bottom: 3px solid #eee;
     color: #fff;
@@ -358,6 +355,10 @@ nav h1 a {
     .medium {
         display: block;
     }
+
+    #restaurants-list div {
+        width: 35%;
+    }
 }
 
 /* Settings for 'large device', ie laptop */
@@ -368,5 +369,11 @@ nav h1 a {
 
     .large {
         display: block;
+    }
+
+    #restaurants-list div {
+        width: 23%;
+        margin-left: auto;
+        margin-rigth:auto;
     }
 }
