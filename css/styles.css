@@ -116,6 +116,7 @@ nav h1 a {
 
 /* ====================== Map ====================== */
 #map-container {
+    order:1;
     width: 100%;
 }
 
@@ -131,6 +132,7 @@ nav h1 a {
     background-color: #3397DB;
     display: flex;
     flex-wrap: wrap;
+    order: 2;
 }
 
 #filters h2 {
@@ -161,6 +163,7 @@ nav h1 a {
 
 /* ====================== Restaurant Listing ====================== */
 #filter-results {
+    order:3;
     width: 100%;
 }
 
@@ -192,9 +195,7 @@ nav h1 a {
     background-color: #ccc;
     display: block;
     margin: 0;
-    max-width: 100%;
-    /*min-height: 248px;*/
-    min-width: 100%;
+    width:100%;
 }
 
 #restaurants-list div h1 {
@@ -398,7 +399,7 @@ nav h1 a {
         width: 50%;
     }
 
-    #footer {
+    .inside #footer {
         width: calc(50% - 50px);
     }
 

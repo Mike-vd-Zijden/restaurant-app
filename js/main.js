@@ -77,7 +77,8 @@ initMap = () => {
     self.newMap = L.map('map', {
         center: [40.722216, -73.987501],
         zoom: 12,
-        scrollWheelZoom: false
+        scrollWheelZoom: false,
+        keyboard: false
     });
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
         mapboxToken: 'pk.eyJ1IjoiZG1taWtlIiwiYSI6ImNqc3l1MHRnbzA3Z200M296Y3VsMGdocWIifQ.rDvDgP5rCKfZVvrjrljVDA',
@@ -152,18 +153,23 @@ createRestaurantHTML = (restaurant) => {
     const image = document.createElement('img');
     image.className = 'restaurant-img';
     image.src = DBHelper.imageUrlForRestaurant(restaurant);
+    // Since the name of the restaurant is in the blocks, we do not need to give a name to the restaurant image
+    image.alt = "";
     div.append(image);
 
     const name = document.createElement('h1');
     name.innerHTML = restaurant.name;
+    name.tabIndex = 0;
     div.append(name);
 
     const neighborhood = document.createElement('p');
     neighborhood.innerHTML = restaurant.neighborhood;
+    neighborhood.tabIndex = 0;
     div.append(neighborhood);
 
     const address = document.createElement('p');
     address.innerHTML = restaurant.address;
+    address.tabIndex = 0;
     div.append(address);
 
     const more = document.createElement('a');
@@ -191,14 +197,12 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     });
 
 };
-/* addMarkersToMap = (restaurants = self.restaurants) => {
-  restaurants.forEach(restaurant => {
-    // Add marker to the map
-    const marker = DBHelper.mapMarkerForRestaurant(restaurant, self.map);
-    google.maps.event.addListener(marker, 'click', () => {
-      window.location.href = marker.url
-    });
-    self.markers.push(marker);
-  });
-} */
 
+skipMapFocus = (event, elementIdToFocus) => {
+    console.log('getting focused');
+    console.log(event);
+    console.log(elementIdToFocus);
+    // let nextFocusElement = document.getElementById(elementIdToFocus);
+    // nextFocusElement.focus();
+    // nextFocusElement.select();
+};

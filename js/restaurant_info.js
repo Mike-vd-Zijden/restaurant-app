@@ -20,7 +20,8 @@ initMap = () => {
             self.newMap = L.map('map', {
                 center: [restaurant.latlng.lat, restaurant.latlng.lng],
                 zoom: 16,
-                scrollWheelZoom: false
+                scrollWheelZoom: false,
+                keyboard:false
             });
             L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
                 mapboxToken: 'pk.eyJ1IjoiZG1taWtlIiwiYSI6ImNqc3l1MHRnbzA3Z200M296Y3VsMGdocWIifQ.rDvDgP5rCKfZVvrjrljVDA',
@@ -35,22 +36,6 @@ initMap = () => {
         }
     });
 };
-
-/* window.initMap = () => {
-  fetchRestaurantFromURL((error, restaurant) => {
-    if (error) { // Got an error!
-      console.error(error);
-    } else {
-      self.map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 16,
-        center: restaurant.latlng,
-        scrollwheel: false
-      });
-      fillBreadcrumb();
-      DBHelper.mapMarkerForRestaurant(self.restaurant, self.map);
-    }
-  });
-} */
 
 /**
  * Get current restaurant from page URL.
@@ -83,9 +68,11 @@ fetchRestaurantFromURL = (callback) => {
  */
 fillRestaurantHTML = (restaurant = self.restaurant) => {
     const name = document.getElementById('restaurant-name');
+    name.tabIndex = 0;
     name.innerHTML = restaurant.name;
 
     const address = document.getElementById('restaurant-address');
+    address.tabIndex = 0;
     address.innerHTML = restaurant.address;
 
     const image = document.getElementById('restaurant-img');
@@ -93,6 +80,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
     image.src = DBHelper.imageUrlForRestaurant(restaurant);
 
     const cuisine = document.getElementById('restaurant-cuisine');
+    address.tabIndex = 0;
     cuisine.innerHTML = restaurant.cuisine_type;
 
     // fill operating hours
@@ -108,6 +96,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
  */
 fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => {
     const hours = document.getElementById('restaurant-hours');
+    hours.tabIndex = 0;
     for (let key in operatingHours) {
         const row = document.createElement('tr');
 
@@ -130,11 +119,13 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
     const container = document.getElementById('reviews-container');
     const title = document.createElement('h2');
     title.innerHTML = 'Reviews';
+    title.tabIndex = 0;
     container.appendChild(title);
 
     if (!reviews) {
         const noReviews = document.createElement('p');
         noReviews.innerHTML = 'No reviews yet!';
+        noReviews.tabIndex = 0;
         container.appendChild(noReviews);
         return;
     }
@@ -152,18 +143,22 @@ createReviewHTML = (review) => {
     const li = document.createElement('li');
     const name = document.createElement('p');
     name.innerHTML = review.name;
+    name.tabIndex = 0;
     li.appendChild(name);
 
     const date = document.createElement('p');
     date.innerHTML = review.date;
+    date.tabIndex = 0;
     li.appendChild(date);
 
     const rating = document.createElement('p');
     rating.innerHTML = `Rating: ${review.rating}`;
+    rating.tabIndex = 0;
     li.appendChild(rating);
 
     const comments = document.createElement('p');
     comments.innerHTML = review.comments;
+    comments.tabIndex = 0;
     li.appendChild(comments);
 
     return li;
@@ -196,4 +191,4 @@ getParameterByName = (name, url) => {
         return '';
     }
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
-}
+};
