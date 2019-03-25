@@ -76,11 +76,13 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
     address.innerHTML = restaurant.address;
 
     const image = document.getElementById('restaurant-img');
+    image.tabIndex = 0;
+    image.alt = 'Restaurant ' + restaurant.name;
     image.className = 'restaurant-img';
     image.src = DBHelper.imageUrlForRestaurant(restaurant);
 
     const cuisine = document.getElementById('restaurant-cuisine');
-    address.tabIndex = 0;
+    cuisine.tabIndex = 0;
     cuisine.innerHTML = restaurant.cuisine_type;
 
     // fill operating hours

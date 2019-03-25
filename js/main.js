@@ -161,13 +161,13 @@ createRestaurantHTML = (restaurant) => {
     const div = document.createElement('div');
 
     const image = document.createElement('img');
+    image.tabIndex = 0;
     image.className = 'restaurant-img';
     image.src = DBHelper.imageUrlForRestaurant(restaurant);
-    // Since the name of the restaurant is in the blocks, we do not need to give a name to the restaurant image
-    image.alt = "";
+    image.alt = "Restaurant " + restaurant.name;
     div.append(image);
 
-    const name = document.createElement('h1');
+    const name = document.createElement('h3');
     name.innerHTML = restaurant.name;
     name.tabIndex = 0;
     div.append(name);
