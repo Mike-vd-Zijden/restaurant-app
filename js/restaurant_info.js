@@ -68,21 +68,17 @@ fetchRestaurantFromURL = (callback) => {
  */
 fillRestaurantHTML = (restaurant = self.restaurant) => {
     const name = document.getElementById('restaurant-name');
-    name.tabIndex = 0;
     name.innerHTML = restaurant.name;
 
     const address = document.getElementById('restaurant-address');
-    address.tabIndex = 0;
     address.innerHTML = restaurant.address;
 
     const image = document.getElementById('restaurant-img');
-    image.tabIndex = 0;
     image.alt = 'Restaurant ' + restaurant.name;
     image.className = 'restaurant-img';
     image.src = DBHelper.imageUrlForRestaurant(restaurant);
 
     const cuisine = document.getElementById('restaurant-cuisine');
-    cuisine.tabIndex = 0;
     cuisine.innerHTML = restaurant.cuisine_type;
 
     // fill operating hours
@@ -98,7 +94,6 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
  */
 fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => {
     const hours = document.getElementById('restaurant-hours');
-    hours.tabIndex = 0;
     for (let key in operatingHours) {
         const row = document.createElement('tr');
 
@@ -121,13 +116,11 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
     const container = document.getElementById('reviews-container');
     const title = document.createElement('h2');
     title.innerHTML = 'Reviews';
-    title.tabIndex = 0;
     container.appendChild(title);
 
     if (!reviews) {
         const noReviews = document.createElement('p');
         noReviews.innerHTML = 'No reviews yet!';
-        noReviews.tabIndex = 0;
         container.appendChild(noReviews);
         return;
     }
@@ -145,22 +138,18 @@ createReviewHTML = (review) => {
     const li = document.createElement('li');
     const name = document.createElement('p');
     name.innerHTML = review.name;
-    name.tabIndex = 0;
     li.appendChild(name);
 
     const date = document.createElement('p');
     date.innerHTML = review.date;
-    date.tabIndex = 0;
     li.appendChild(date);
 
     const rating = document.createElement('p');
     rating.innerHTML = `Rating: ${review.rating}`;
-    rating.tabIndex = 0;
     li.appendChild(rating);
 
     const comments = document.createElement('p');
     comments.innerHTML = review.comments;
-    comments.tabIndex = 0;
     li.appendChild(comments);
 
     return li;
